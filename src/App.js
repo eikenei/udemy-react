@@ -1,23 +1,31 @@
 import React from 'react';
-
-//class App extends Component {
-//	render(){
-//		//return <div>Hello world!!</div>;
-//		return <h1>Hello world!!</h1>;
-//	}
-//}
+import PropTypes from 'prop-types';
 
 const App = () => {
+	const profiles = [
+		{name: "taro", age:30},
+		{name: "Hanako", age:20}
+	]
+
 	return(
 		<div>
-			<Cat />
-			
+			{
+				profiles.map((profile, index) => {
+					return <User name={profile.name} age={profile.age} key={index} />
+				})
+			}
 		</div>
+
 	)
 }
 
-const Cat = () => {
-	return <div>NNNNN</div>
+const User = (props) => {
+return <div>Hi {props.name} and age is {props.age}</div>
+}
+
+User.propTypes = {
+	name: PropTypes.string,
+	age: PropTypes.number
 }
 
 export default App;
